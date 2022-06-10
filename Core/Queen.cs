@@ -2,7 +2,7 @@
 
 using System;
 
-namespace Chess3Console
+namespace Core
 {
     public class Queen : Piece
     {

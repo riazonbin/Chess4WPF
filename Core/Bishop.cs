@@ -1,8 +1,9 @@
 ﻿// Zaripov Riyaz 220P Chess-3, 12.04.22
 
+using Chess3Console;
 using System;
 
-namespace Chess3Console
+namespace Core
 {
     public class Bishop : Piece
     {

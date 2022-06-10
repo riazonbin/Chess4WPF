@@ -3,7 +3,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Chess3Console
+namespace Core
 {
     public class Piece
     {
