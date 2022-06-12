@@ -15,8 +15,15 @@ namespace Chess3Console
                 string coords1 = Console.ReadLine();
                 string coords2 = Console.ReadLine();
 
-                Piece piece = PieceFactory.MakePiece(pieceCode, coords1);
-                Console.WriteLine(piece.Move(coords2) ? "YES" : "NO");
+                try
+                {
+                    Piece piece = PieceFactory.MakePiece(pieceCode, coords1);
+                    Console.WriteLine(piece.Move(coords2) ? "YES" : "NO");
+                }
+                catch(Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
             }
         }
     }

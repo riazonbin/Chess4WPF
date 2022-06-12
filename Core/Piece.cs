@@ -27,6 +27,11 @@ namespace Core
             int newX = charToIntCoords[moveStr[0]];
             int newY = int.Parse(moveStr[1].ToString());
 
+            if(newX > 8 || newX < 1 || newY > 9 || newY < 1)
+            {
+                throw new Exception("Border is 8x8 cells!!!");
+            }
+
             if (IsRightMove(newX, newY))
             {
                 x = newX;
@@ -38,6 +43,11 @@ namespace Core
 
         public bool Move(int x, int y)
         {
+            if (x > 8 || x < 1 || y > 9 || y < 1)
+            {
+                throw new Exception("Border is 8x8 cells!!!");
+            }
+
             if (IsRightMove(x, y))
             {
                 this.x = x;
