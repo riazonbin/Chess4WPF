@@ -4,9 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Chess4WPF"
-        x:Name="ChessWindow" x:Class="Chess4WPF.MainWindow"
+        x:Name="Chess4WPF" x:Class="Chess4WPF.MainWindow"
         mc:Ignorable="d"
-        Title="Chess" Height="840" Width="840" ResizeMode="NoResize">
+        Title="Chess" Height="840" Width="800" ResizeMode="NoResize">
 
     <Window.Resources>
         <Style x:Key="btnStyle" TargetType="Button">
@@ -15,12 +15,19 @@
             <Setter Property="Content" Value=""></Setter>
             <Setter Property="VerticalAlignment" Value="Center"></Setter>
             <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+            <Setter Property="FontSize" Value="16"></Setter>
+            <EventSetter Event="Click" Handler="Button_Click"></EventSetter>
+            <EventSetter Event="MouseEnter" Handler="Button_MouseEnter"></EventSetter>
         </Style>
+
         <Style x:Key="btnWhite" BasedOn="{StaticResource btnStyle}" TargetType="Button">
             <Setter Property="Background" Value="White"></Setter>
+            <Setter Property="Foreground" Value="Black"></Setter>
         </Style>
+
         <Style x:Key="btnBlack" BasedOn="{StaticResource btnStyle}" TargetType="Button">
             <Setter Property="Background" Value="Black"></Setter>
+            <Setter Property="Foreground" Value="White"></Setter>
         </Style>
 
         <Style TargetType="Label">
@@ -31,9 +38,9 @@
 
     </Window.Resources>
 
-    <Grid>
+    <Grid x:Name="mainGrid">
         <Grid.RowDefinitions>
-            <RowDefinition Height="30*"/>
+            <RowDefinition Height="40"/>
             <RowDefinition Height="90"/>
             <RowDefinition Height="90"/>
             <RowDefinition Height="90"/>
@@ -42,10 +49,11 @@
             <RowDefinition Height="90"/>
             <RowDefinition Height="90"/>
             <RowDefinition Height="90"/>
-            <RowDefinition Height="30*"/>
+            <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
+
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="30*"/>
+            <ColumnDefinition Width="40"/>
             <ColumnDefinition Width="90"/>
             <ColumnDefinition Width="90"/>
             <ColumnDefinition Width="90"/>
@@ -54,7 +62,7 @@
             <ColumnDefinition Width="90"/>
             <ColumnDefinition Width="90"/>
             <ColumnDefinition Width="90"/>
-            <ColumnDefinition Width="30*"/>
+            <ColumnDefinition Width="40"/>
         </Grid.ColumnDefinitions>
 
         <Button Grid.Column="1" Grid.Row="1" Style="{StaticResource btnWhite}"/>
@@ -140,176 +148,27 @@
         <Label Content="G" Grid.Column="7" Grid.Row="9"/>
         <Label Content="H" Grid.Column="8" Grid.Row="9"/>
 
-        <Label Content="A" Grid.Column="1" Grid.Row="0" RenderTransformOrigin="0.5,0.5">
-            <Label.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="180"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Label.RenderTransform>
-        </Label>
-        <Label Content="B" Grid.Column="2" Grid.Row="0" RenderTransformOrigin="0.5,0.5">
-            <Label.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="180"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Label.RenderTransform>
-        </Label>
-        <Label Content="C" Grid.Column="3" Grid.Row="0" RenderTransformOrigin="0.5,0.5">
-            <Label.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="180"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Label.RenderTransform>
-        </Label>
-        <Label Content="D" Grid.Column="4" Grid.Row="0" RenderTransformOrigin="0.5,0.5">
-            <Label.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="180"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Label.RenderTransform>
-        </Label>
-        <Label Content="E" Grid.Column="5" Grid.Row="0" RenderTransformOrigin="0.5,0.5">
-            <Label.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="180"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Label.RenderTransform>
-        </Label>
-        <Label Content="F" Grid.Column="6" Grid.Row="0" RenderTransformOrigin="0.5,0.5">
-            <Label.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="180"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Label.RenderTransform>
-        </Label>
-        <Label Content="G" Grid.Column="7" Grid.Row="0" RenderTransformOrigin="0.5,0.5">
-            <Label.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="180"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Label.RenderTransform>
-        </Label>
-        <Label Content="H" Grid.Column="8" Grid.Row="0" RenderTransformOrigin="0.5,0.5">
-            <Label.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="180"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Label.RenderTransform>
-        </Label>
 
-        <Label Content="1" Grid.Column="0" Grid.Row="1"/>
-        <Label Content="2" Grid.Column="0" Grid.Row="2"/>
-        <Label Content="3" Grid.Column="0" Grid.Row="3"/>
-        <Label Content="4" Grid.Column="0" Grid.Row="4"/>
-        <Label Content="5" Grid.Column="0" Grid.Row="5"/>
-        <Label Content="6" Grid.Column="0" Grid.Row="6"/>
-        <Label Content="7" Grid.Column="0" Grid.Row="7"/>
-        <Label Content="8" Grid.Column="0" Grid.Row="8"/>
-
-        <Label Content="1" Grid.Column="9" Grid.Row="1" RenderTransformOrigin="0.5,0.5">
-            <Label.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="180"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Label.RenderTransform>
-        </Label>
-        <Label Content="2" Grid.Column="9" Grid.Row="2" RenderTransformOrigin="0.5,0.5">
-            <Label.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="180"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Label.RenderTransform>
-        </Label>
-        <Label Content="3" Grid.Column="9" Grid.Row="3" RenderTransformOrigin="0.5,0.5">
-            <Label.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="180"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Label.RenderTransform>
-        </Label>
-        <Label Content="4" Grid.Column="9" Grid.Row="4" RenderTransformOrigin="0.5,0.5">
-            <Label.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="180"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Label.RenderTransform>
-        </Label>
-        <Label Content="5" Grid.Column="9" Grid.Row="5" RenderTransformOrigin="0.5,0.5">
-            <Label.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="180"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Label.RenderTransform>
-        </Label>
-        <Label Content="6" Grid.Column="9" Grid.Row="6" RenderTransformOrigin="0.5,0.5">
-            <Label.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="180"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Label.RenderTransform>
-        </Label>
-        <Label Content="7" Grid.Column="9" Grid.Row="7" RenderTransformOrigin="0.5,0.5">
-            <Label.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="180"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Label.RenderTransform>
-        </Label>
-        <Label Content="8" Grid.Column="9" Grid.Row="8" RenderTransformOrigin="0.5,0.5">
-            <Label.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="180"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Label.RenderTransform>
-        </Label>
-
+        <Label Content="1" Grid.Column="0" Grid.Row="8"/>
+        <Label Content="2" Grid.Column="0" Grid.Row="7"/>
+        <Label Content="3" Grid.Column="0" Grid.Row="6"/>
+        <Label Content="4" Grid.Column="0" Grid.Row="5"/>
+        <Label Content="5" Grid.Column="0" Grid.Row="4"/>
+        <Label Content="6" Grid.Column="0" Grid.Row="3"/>
+        <Label Content="7" Grid.Column="0" Grid.Row="2"/>
+        <Label Content="8" Grid.Column="0" Grid.Row="1"/>
+        
+        <Menu Grid.ColumnSpan="10" FontSize="18">
+            <MenuItem Header="Pieces">
+                <MenuItem Header="King" Click="PiecesMenuItem_Click" />
+                <MenuItem Header="Queen" Click="PiecesMenuItem_Click"/>
+                <MenuItem Header="Rook" Click="PiecesMenuItem_Click"/>
+                <MenuItem Header="Knight" Click="PiecesMenuItem_Click"/>
+                <MenuItem Header="Bishop" Click="PiecesMenuItem_Click"/>
+            </MenuItem>
+            <MenuItem Header="Desk">
+                <MenuItem Header="Clear desk" Click="ClearDeskMenuItem_Click"></MenuItem>
+            </MenuItem>
+        </Menu>
     </Grid>
 </Window>

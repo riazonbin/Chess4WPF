@@ -10,6 +10,16 @@ namespace Core
     {
         public static Piece MakePiece(string pieceCode, string coords1)
         {
+            int x1 = coords1[0];
+            int y1 = coords1[1];
+
+            return MakePiece(pieceCode, x1, y1);
+
+        }
+
+
+        public static Piece MakePiece(string pieceCode, int x1, int y1)
+        {
             Piece piece;
 
             switch (pieceCode)
@@ -17,31 +27,31 @@ namespace Core
                 case "K":
                 case "k":
                 case "King":
-                    piece = new King(coords1);
+                    piece = new King(x1, y1);
                     break;
 
                 case "B":
                 case "b":
                 case "Bishop":
-                    piece = new Bishop(coords1);
+                    piece = new Bishop(x1, y1);
                     break;
 
                 case "N":
                 case "n":
                 case "Knight":
-                    piece = new Knight(coords1);
+                    piece = new Knight(x1, y1);
                     break;
 
                 case "Q":
                 case "q":
                 case "Queen":
-                    piece = new Queen(coords1);
+                    piece = new Queen(x1, y1);
                     break;
 
                 case "R":
                 case "r":
                 case "Rook":
-                    piece = new Rook(coords1);
+                    piece = new Rook(x1, y1);
                     break;
 
                 default: throw new Exception("Unknown figure");
