@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Core
 {
-    public class Piece
+    public abstract class Piece
     {
         protected int x;
         protected int y;
@@ -22,7 +22,7 @@ namespace Core
             this.y = y;
         }
 
-        public void Move(string moveStr)
+        public bool Move(string moveStr)
         {
             int newX = charToIntCoords[moveStr[0]];
             int newY = int.Parse(moveStr[1].ToString());
@@ -31,24 +31,20 @@ namespace Core
             {
                 x = newX;
                 y = newY;
+                return true;
             }
-            else
-            {
-                Console.WriteLine($"Wrong move for the {GetType().Name}");
-            }
+            return false;
         }
 
-        public void Move(int x, int y)
+        public bool Move(int x, int y)
         {
             if (IsRightMove(x, y))
             {
                 this.x = x;
                 this.y = y;
+                return true;
             }
-            else
-            {
-                Console.WriteLine($"Wrong move for the {GetType().Name}");
-            }
+            return false;
         }
 
         virtual private protected bool IsRightMove(int x, int y)

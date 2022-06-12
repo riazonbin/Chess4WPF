@@ -9,26 +9,15 @@ namespace Chess3Console
     {
         static void Main(string[] args)
         {
-            Knight knight = new Knight(2, 1);
-            knight.Move(1, 4);
-            knight.Print();
+            while(true)
+            {
+                string pieceCode = Console.ReadLine();
+                string coords1 = Console.ReadLine();
+                string coords2 = Console.ReadLine();
 
-            Queen queen = new Queen(1, 1);
-            queen.Print();
-            queen.Move("B2");
-            queen.Print();
-
-            Bishop bishop = new Bishop("C1");
-            bishop.Move("D2");
-            bishop.Move("E3");
-            bishop.Move("D5");
-            bishop.Print();
-
-            King king = new King(4, 4);
-            king.Move(5, 5);
-            king.Print();
-            king.Move(1, 1);
-            king.Print();
+                Piece piece = PieceFactory.MakePiece(pieceCode, coords1);
+                Console.WriteLine(piece.Move(coords2) ? "YES" : "NO");
+            }
         }
     }
 }
