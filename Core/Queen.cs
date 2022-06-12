@@ -16,8 +16,14 @@ namespace Core
 
         private protected override bool IsRightMove(int x, int y)
         {
-            return Math.Abs(this.x - x) <= 1 && Math.Abs(this.y - y) <= 1
-            || this.x == x && this.y != y || this.y == y && this.x != x;
+            int xMovement = Math.Abs(this.x - x);
+            int yMovement = Math.Abs(this.y - y);
+
+            string coords1 = $"{this.x}{this.y}";
+            string coords2 = $"{x}{y}";
+
+            return (xMovement == yMovement || xMovement == 0 || yMovement == 0)
+                    && coords1!=coords2;
         }
     }
 }

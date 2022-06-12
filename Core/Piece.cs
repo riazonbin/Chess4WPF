@@ -57,6 +57,20 @@ namespace Core
             return false;
         }
 
+        public bool TryMove(int x, int y)
+        {
+            if (x > 8 || x < 1 || y > 9 || y < 1)
+            {
+                throw new Exception("Border is 8x8 cells!!!");
+            }
+
+            if (IsRightMove(x, y))
+            {
+                return true;
+            }
+            return false;
+        }
+
         virtual private protected bool IsRightMove(int x, int y)
         {
             return true;
@@ -89,6 +103,15 @@ namespace Core
         public void Print()
         {
             Console.WriteLine($"{GetType().Name} is located on {intToCharCoords[x].ToString() + y}");
+        }
+
+        public int GetXCoord()
+        {
+            return x;
+        }
+        public int GetYCoord()
+        {
+            return y;
         }
     }
 }

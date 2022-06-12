@@ -25,6 +25,7 @@ namespace Chess4WPF
         private string chosenPiece;
         private Piece piece;
         private bool figureisSet;
+        private Button lastButton;
 
         public MainWindow()
         {
@@ -33,19 +34,31 @@ namespace Chess4WPF
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if(figureisSet)
-            {
-                return;
-            }
-
-            (sender as Button).Content = chosenPiece;
-
             int row = GetRow(sender);
             int column = GetColumn(sender);
 
-            piece = PieceFactory.MakePiece(chosenPiece, row, column);
+            if (figureisSet)
+            {
+                if(piece.Move(row, column))
+                {
+                    lastButton.Content = "";
+                    lastButton = (sender as Button);
+                    lastButton.Content = chosenPiece;
+                }
+                return;
+            }
 
-            figureisSet = true;
+            try 
+            {
+                (sender as Button).Content = chosenPiece;
+                piece = PieceFactory.MakePiece(chosenPiece, row, column);
+                figureisSet = true;
+
+                lastButton = (sender as Button);
+            }
+            catch
+            {
+            }
         }
 
         private void PiecesMenuItem_Click(object sender, RoutedEventArgs e)
@@ -89,13 +102,15 @@ namespace Chess4WPF
 
         private void Button_MouseEnter(object sender, MouseEventArgs e)
         {
-            if(figureisSet && (sender as Button).Content == "")
+            if(!figureisSet || (sender as Button).Content != "")
             {
-                int row = GetRow(sender);
-                int column = GetColumn(sender);
-
-                (sender as Button).Content = piece.Move(row, column) ? "YES" : "NO";
+                return;
             }
+
+            int row = GetRow(sender);
+            int column = GetColumn(sender);
+
+            (sender as Button).Content = piece.TryMove(row, column) ? "YES" : "NO";
         }
 
         private int GetRow(object sender)
@@ -108,6 +123,16 @@ namespace Chess4WPF
         {
             int column = Grid.GetColumn(sender as Button);
             return column;
+        }
+
+        private void Button_MouseLeave(object sender, MouseEventArgs e)
+        {
+            if(figureisSet && GetRow(sender) == piece.GetXCoord() 
+                && GetColumn(sender) == piece.GetYCoord())
+            {
+                return;
+            }
+            (sender as Button).Content = "";
         }
     }
 }
