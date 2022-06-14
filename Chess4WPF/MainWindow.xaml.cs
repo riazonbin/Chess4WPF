@@ -1,4 +1,6 @@
-﻿using System;
+﻿// Zaripov Riyaz 220P Chess-4, 14.06.22
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

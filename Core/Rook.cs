@@ -1,4 +1,4 @@
-﻿// Zaripov Riyaz 220P Chess-3, 12.04.22
+﻿// Zaripov Riyaz 220P Chess-4, 14.06.22
 
 using System;
 
