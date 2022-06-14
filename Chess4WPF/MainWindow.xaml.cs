@@ -65,27 +65,35 @@ namespace Chess4WPF
 
         private void PiecesMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            switch((sender as MenuItem).Header)
+            if(string.IsNullOrEmpty(chosenPiece))
             {
-                case "King": chosenPiece = "King";
-                    break;
+                switch ((sender as MenuItem).Header)
+                {
+                    case "King":
+                        chosenPiece = "King";
+                        break;
 
-                case "Queen":
-                    chosenPiece = "Queen";
-                    break;
+                    case "Queen":
+                        chosenPiece = "Queen";
+                        break;
 
-                case "Rook":
-                    chosenPiece = "Rook";
-                    break;
+                    case "Rook":
+                        chosenPiece = "Rook";
+                        break;
 
-                case "Knight":
-                    chosenPiece = "Knight";
-                    break;
+                    case "Knight":
+                        chosenPiece = "Knight";
+                        break;
 
-                case "Bishop":
-                    chosenPiece = "Bishop";
-                    break;
+                    case "Bishop":
+                        chosenPiece = "Bishop";
+                        break;
 
+                }
+            }
+            else
+            {
+                MessageBox.Show("Clear the desk to set new piece!");
             }
 
         }
